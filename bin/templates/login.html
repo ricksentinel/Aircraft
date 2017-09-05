@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example </title>
+       	<style>
+       		body,html{
+				background-image: url("https://s-media-cache-ak0.pinimg.com/originals/11/0c/d2/110cd2f0bcabb172235ba03cb7eb7afc.jpg");
+				background-attachment: fixed;
+				background-repeat: no-repeat;
+				margin: 0;
+				height: 100%;
+			}
+			#main{
+				margin-left: 10%;
+				width: 80%;
+				min-height: 100%;
+				background-color: rgba(247, 216, 131,0.8);
+				box-shadow: 1px 1px 1px;
+			}
+			#pageHeader{
+	    		background-color: rgba(232, 173, 11,0.9);
+	    		margin-bottom: 10px;
+	    		
+	    	}
+	    	#headerImg{
+	    		height: 100px;
+	    		background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/aircrafts/jet-aircraft-header-3922.jpg"),
+	    		linear-gradient(to bottom, rgb(63,85,143), rgb(64,102,164) 40%, rgb(64,102,164) 50%, rgb(64,102,164) 75%, rgb(63,85,143));
+	    		background-size: contain;
+	    		background-repeat: no-repeat;
+	    		background-position: right, 0 0;
+	    		text-align: left;
+	    	}
+	    	#content{
+	    		background-color: rgba(247, 218, 165, 0.8);
+	    		margin: 2%;
+	    		border: 1px solid #e0b567;
+	    		align: left;
+	    		box-shadow: 1px 1px 1px;
+	    		
+	    	}
+	    	.buttons{
+	    		height: 100%;
+	    	}
+       		#error,#logout{
+       			margin-top: 10px;
+       			color: red;
+       			text-align: center;
+       		}
+       		#loginSection{
+       			margin: auto;
+       			margin-top: 20%;
+       			width: 10%;
+				padding: 2%;
+ 				border:1px solid silver;
+ 				border-radius: 4px;
+ 				box-shadow: 1px 1px 1px;
+ 				background-color: rgba(247, 218, 165, 0.8);
+ 				text-align: left;
+       		}
+       		#signin{
+
+       		}
+       		input{
+       			margin: 5px;
+       		}
+       	</style>
+ </head>
+ <body>
+    <div id="main">
+	<div id="headerImg">
+		 
+	</div>
+	<header id="pageHeader">
+		<table cellspacing="2">
+			<th>
+				<form action='/home'>
+            	
+            		<input class="buttons" type="submit" value="Home"/>
+       	 		</form>
+			</th>
+			<th>
+				<form action='/aircrafts/projects/new'>
+            	
+            		<input class="buttons" type="submit" value="Create Project"/>
+       	 		</form>
+			</th>
+			<th>
+				<form action='/aircrafts/list/all'>
+            	
+            		<input class="buttons" type="submit" value="List of Aircrafts"/>
+       	 		</form>
+			</th>
+			<th>
+				
+			</th>
+		</table>
+	</header>
+	
+	<div id="loginSection">
+        <form th:action="@{/login}" method="post">
+            <label> Username : <input type="text" name="username"/> </label><br/>
+            <label> Password: <input type="password" name="password"/> </label><br/>
+            <input id="signin" type="submit" value="Sign In"/>
+            <input id="signup" type="submit" value="Sign Up"/>
+        </form>
+        </div>
+        
+        <div id="error" th:if="${param.error}">
+            Invalid username and/or password!
+        </div>
+        <div id="logout" th:if="${param.logout}">
+            You have been logged out.
+        </div>
+	
+	
+	</div>
+    
+        <header>
+		<table cellspacing="2">
+			<th margin="0%">
+				<form action='/listaprodutos'>
+            	
+            	<input class="botoes" type="submit" value="Produtos"/>
+       	 		</form>
+			</th>
+			<th>
+				<a href="/">
+				
+				</a>
+			</th>
+			<!-- <th id="areaLogin">
+				<form th:action="@{/login}" method="post">
+            	<label> Username : <input type="text" name="username"/> 
+            	 Password: <input type="password" name="password"/> </label>
+            	<input id="botao" type="submit" value="Sign In"/>
+       	 		</form>
+			</th> -->
+		</table>
+
+	</header>
+    </body>
+</html> 

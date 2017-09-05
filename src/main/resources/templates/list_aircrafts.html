@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+ <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ 
+<head>
+<style>
+
+	body,html{
+		background-image: url("http://www.zastavki.com/pictures/originals/2015/Aviation_Fighters_in_the_hangar_095110_.jpg");
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;
+		margin: 0;
+		height: 100%;
+	}
+	#main{
+		margin-left: 10%;
+		width: 80%;
+		min-height: 100%;
+		background-color: rgba(247, 216, 131,0.8);
+		box-shadow: 1px 1px 1px;
+	}
+	#pageHeader{
+   		background-color: rgba(232, 173, 11,0.9);
+   		margin-bottom: 10px;
+   		
+   	}
+   	#headerImg{
+   		height: 100px;
+   		background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/aircrafts/jet-aircraft-header-3922.jpg"),
+   		linear-gradient(to bottom, rgb(63,85,143), rgb(64,102,164) 40%, rgb(64,102,164) 50%, rgb(64,102,164) 75%, rgb(63,85,143));
+   		background-size: contain;
+   		background-repeat: no-repeat;
+   		background-position: right, 0 0;
+   		text-align: left;
+   	}
+   	#content{
+   		background-color: rgba(247, 218, 165, 0.8);
+   		margin: 2%;
+   		border: 1px solid #e0b567;
+   		align: left;
+   		box-shadow: 1px 1px 1px;
+   		padding: 1%;
+   	}
+   	.buttons{
+   		height: 100%;
+   	}
+	#listTable{
+		border: 1px solid #86afba;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #86afba;
+		width: 40%;
+		text-align: center; 
+	}
+	.listHeader{
+		background-color: #86afba;
+		color: white;
+		font-weight: bold;
+		font-size: 150%;
+	}
+	.listData{
+		border: 1px solid #86afba;
+		background-color: white;
+		font-size: 125%;
+	}
+	
+	
+</style>
+
+<title>Aircraft List</title>
+</head>
+<body> 
+	<div id="main">
+		<div id="headerImg">
+		 
+		</div>
+		<header id="pageHeader">
+			<table cellspacing="2">
+				<th>
+					<form action='/home'>
+	            	
+	            		<input class="buttons" type="submit" value="Home"/>
+	       	 		</form>
+				</th>
+				<th>
+					<form action='/aircrafts/projects/new'>
+	            	
+	            		<input class="buttons" type="submit" value="Create Project"/>
+	       	 		</form>
+				</th>
+				<th>
+					<form action='/aircrafts/list/all'>
+	            	
+	            		<input class="buttons" type="submit" value="List of Aircrafts"/>
+	       	 		</form>
+				</th>
+				<th>
+					<form th:action="@{/logout}" method="post">
+	            	<input type="submit" value="Sign Out"/>
+	       	 		</form>
+				</th>
+				<th>
+					<span th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
+				</th>
+			</table>
+	    </header>
+    	<div id="content">
+			<table cellspacing="1" id="listTable">
+		  		<thead>
+		    		<tr>
+		    			<th class="listHeader" width="15%" th:text="Number">id</th>
+		      			<th class="listHeader" th:text="Name">Nome</th>
+		      			<th class="listHeader" th:text = "Manufacturer">Manufacturer</th>
+		      			<th class="listHeader" th:text = "Model">Model</th>
+		      			<th sec:authorize="hasRole('MANUFACTURER')" class="listHeader" th:text="Actions">Actions</th>
+		      			<!-- th:if="${#authorization.expression('hasRole('MANUFACTURER')')" -->
+		      			
+		    		</tr>
+		  		</thead>
+	  			<tbody>
+	    			<tr th:each="crafts: ${aircrafts}">
+				    	<td class="listData" th:text="${crafts.id}"></td>
+				      	<td class="listData" th:text="${crafts.name}"></td>
+				      	<td class="listData" th:text="${crafts.manufacturer}"></td>
+				      	<!-- <td th:inline="text">[[${#httpServletRequest.remoteUser}]]</td> -->
+				      	<td class="listData" th:text="${crafts.model}"></td>
+				      	
+				    </tr>
+	  			</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
