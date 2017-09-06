@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Spring Security Example </title>
+    </head>
+    <body>
+         <div th:if="${param.unavailableUsername}">
+            Username is unavailable.
+        </div>
+        <div th:if="${param.invalidPassword}">
+            Password requires at least 6 characters.
+        </div>
+        <form th:action="@{/register}" method="post">
+            <div><label> Username: <input type="text" name="username"/> </label></div>
+            <div><label> Real name: <input type="text" name="realName"/> </label></div>
+            <div><label> Password: <input type="password" name="password"/> </label></div>
+            <div><label> Headquarters: <input type="text" name="headquarters"/> </label></div>
+            <div><input type="submit" value="Sign Up"/></div>
+        </form>
+    </body>
+</html>

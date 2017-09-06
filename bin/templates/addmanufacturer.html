@@ -10,9 +10,9 @@
 			background-image: url("https://blog.spoongraphics.co.uk/wp-content/uploads/2017/08/thumbnail-3.jpg");
 			background-attachment: fixed;
 			background-repeat: no-repeat;
+			background-size: cover;
 			margin: 0;
 			height: 100%;
-			font-family: sans-serif;
 		}
 		#main{
 			margin-left: 10%;
@@ -26,13 +26,6 @@
     		margin-bottom: 10px;
     		
     	}
-    	.buttons{
-    		height: 100%;
-    		width:100%;
-    	}
-    	#headerTable{
-    		width: 100%;
-    	}
     	#headerImg{
     		height: 100px;
     		background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/aircrafts/jet-aircraft-header-3922.jpg"),
@@ -44,15 +37,14 @@
     	}
     	#content{
     		background-color: rgba(247, 218, 165, 0.8);
-    		margin: 2%; 
+    		margin: 2%;
     		border: 1px solid #e0b567;
     		align: left;
     		box-shadow: 1px 1px 1px;
     		padding: 1%;
     	}
-    	
-    	#newProject{
-    		width:100%;
+    	.buttons{
+    		height: 100%;
     	}
 	</style>
 	
@@ -63,7 +55,7 @@
 			 
 		</div>
 		<header id="pageHeader">
-			<table id="headerTable" cellspacing="2">
+			<table cellspacing="2">
 				<th>
 					<form action='/home'>
 	            	
@@ -83,41 +75,16 @@
 	       	 		</form>
 				</th>
 				<th>
-					<form th:action="@{/logout}" method="post">
-	            		<input class="buttons" type="submit" value="Sign Out"/>
-	       	 		</form>
-				</th>
-				<th>
-					<span th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
+					
 				</th>
 			</table>
-	    </header>
+		</header>
 		
 		<div id="content">
-			<h2>New Project</h2>
-			<form id="newProject" action="#" th:action="@{/aircrafts/projects/new}" th:object="${newAircraft}" method="post">
-		    	<p>Name:<br/> <input type="text" th:field="*{name}" /></p>
-		        <p>Model:<br/> <input type="text" th:field="*{model}" /></p>
-		        <p>Class:<br/> 
-		        			<select th:field="*{aircraftClass}">
-		        		  		<option value="Fighter">Fighter</option>
-		        		  		<option value="Helicopter">Helicopter</option>
-		        		  		<option value="Interceptor">Interceptor</option>
-		        		  		<option value="Bomber">Bomber</option>
-		        		 	</select>
-		        		  </p>
-		        <!-- <p>Manufacturer: <input type="text" th:field="*{manufacturer}"/></p> -->
-		        <p>Manufacturer: <br/>
-		        			<select th:field="*{manufacturer}">
-		        		  		<option value="Fairchild Republic">Fairchild Republic</option>
-		        		  		<option value="Lockheed Martin">Lockheed Martin</option>
-		        		  		<option value="Sukhoi">Sukhoi</option>
-		        		 	</select>
-		        		  </p>
-		        <!-- <p>Manufacturer:
-		        		<select th:field="*{aircraftClass}" 
-		        	
-		        </p> -->
+			<form action="#" th:action="@{/manufacturers/new}" th:object="${newManufacturer}" method="post">
+		    	<p>Name: <input type="text" th:field="*{name}" /></p>
+		        <p>Model: <input type="text" th:field="*{headquarters}" /></p>
+		        
 		        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 		    </form>
 	    </div>

@@ -20,7 +20,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+            	.antMatchers("/aircrafts/projects/new")
+            	.hasAuthority("ADMIN")    
+            	.and()
+            .authorizeRequests()
+        		.antMatchers("/", "/register", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -29,9 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .logout()
                 .permitAll();
+        
     }
 
-    @Autowired
+    /*@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     	
         auth
@@ -39,10 +44,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("raf").password("godsavethequeen").roles("FORCE");
         auth
         	.inMemoryAuthentication()
-            	.withUser("fairchild").password("republic").roles("MANUFACTURER");
+            	.withUser("fairchild").password("republic").roles("ADMIN");
         
 //        auth
 //        .inMemoryAuthentication()
 //            .withUser(man.getName()).password(man.getPassword()).roles("FORCE");
-    }
+    }*/
 }

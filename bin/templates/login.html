@@ -23,6 +23,14 @@
 	    		margin-bottom: 10px;
 	    		
 	    	}
+	    	.buttons{
+	    		height: 100%;
+	    		width:100%;
+	    		margin-right: 5px;
+	    	}
+	    	#headerTable{
+	    		width: 100%;
+	    	}
 	    	#headerImg{
 	    		height: 100px;
 	    		background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/aircrafts/jet-aircraft-header-3922.jpg"),
@@ -38,10 +46,7 @@
 	    		border: 1px solid #e0b567;
 	    		align: left;
 	    		box-shadow: 1px 1px 1px;
-	    		
-	    	}
-	    	.buttons{
-	    		height: 100%;
+	    		padding: 1%;
 	    	}
        		#error,#logout{
        			margin-top: 10px;
@@ -51,7 +56,7 @@
        		#loginSection{
        			margin: auto;
        			margin-top: 20%;
-       			width: 10%;
+       			width: 15%;
 				padding: 2%;
  				border:1px solid silver;
  				border-radius: 4px;
@@ -59,11 +64,14 @@
  				background-color: rgba(247, 218, 165, 0.8);
  				text-align: left;
        		}
-       		#signin{
-
+       		#signin,#signup{
+				margin: 5px;
+				width: 100%;
        		}
        		input{
        			margin: 5px;
+       			width: 100%;
+       			
        		}
        	</style>
  </head>
@@ -73,11 +81,17 @@
 		 
 	</div>
 	<header id="pageHeader">
-		<table cellspacing="2">
+		<table id="headerTable" cellspacing="2">
 			<th>
 				<form action='/home'>
             	
             		<input class="buttons" type="submit" value="Home"/>
+       	 		</form>
+			</th>
+			<th>
+				<form action='/news'>
+            	
+            		<input class="buttons" type="submit" value="News"/>
        	 		</form>
 			</th>
 			<th>
@@ -92,9 +106,7 @@
             		<input class="buttons" type="submit" value="List of Aircrafts"/>
        	 		</form>
 			</th>
-			<th>
-				
-			</th>
+			
 		</table>
 	</header>
 	
@@ -103,7 +115,10 @@
             <label> Username : <input type="text" name="username"/> </label><br/>
             <label> Password: <input type="password" name="password"/> </label><br/>
             <input id="signin" type="submit" value="Sign In"/>
-            <input id="signup" type="submit" value="Sign Up"/>
+            
+        </form>
+        <form th:action="@{/manufacturer/new}">
+        	<input id="signup" type="submit" value="Sign Up"/>
         </form>
         </div>
         
@@ -117,28 +132,6 @@
 	
 	</div>
     
-        <header>
-		<table cellspacing="2">
-			<th margin="0%">
-				<form action='/listaprodutos'>
-            	
-            	<input class="botoes" type="submit" value="Produtos"/>
-       	 		</form>
-			</th>
-			<th>
-				<a href="/">
-				
-				</a>
-			</th>
-			<!-- <th id="areaLogin">
-				<form th:action="@{/login}" method="post">
-            	<label> Username : <input type="text" name="username"/> 
-            	 Password: <input type="password" name="password"/> </label>
-            	<input id="botao" type="submit" value="Sign In"/>
-       	 		</form>
-			</th> -->
-		</table>
-
-	</header>
+        
     </body>
 </html> 

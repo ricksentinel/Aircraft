@@ -25,6 +25,14 @@
     		margin-bottom: 10px;
     		
     	}
+    	.buttons{
+    		height: 100%;
+    		width:100%;
+    		margin-right: 5px;
+    	}
+    	#headerTable{
+    		width: 100%;
+    	}
     	#headerImg{
     		height: 100px;
     		background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/aircrafts/jet-aircraft-header-3922.jpg"),
@@ -34,6 +42,7 @@
     		background-position: right, 0 0;
     		text-align: left;
     	}
+    	
     	#content{
     		background-color: rgba(247, 218, 165, 0.8);
     		margin: 2%;
@@ -42,12 +51,7 @@
     		box-shadow: 1px 1px 1px;
     		padding: 1%;
     	}
-    	.buttons{
-    		height: 100%;
-    	}
-    	#headerTable{
-    		width: 100%;
-    	}
+    	
 	</style>
 	
 </head>
@@ -82,14 +86,7 @@
             		<input class="buttons" type="submit" value="List of Aircrafts"/>
        	 		</form>
 			</th>
-			<th>
-				<form th:action="@{/logout}" method="post">
-            	<input type="submit" value="Sign Out"/>
-       	 		</form>
-			</th>
-			<th>
-				<p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
-			</th>
+			
 		</table>
 	</header>
 	

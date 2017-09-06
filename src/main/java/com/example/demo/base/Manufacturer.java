@@ -28,12 +28,29 @@ public class Manufacturer {
 	@Column(name = "Manufacturer_ID")
 	private int id;
 	
-	@NotNull
+	private String username;
+	
 	private String password;
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@NotNull
 	@Size(min=2)
-	@Column(name = "Manufacturer_NAME")
+	/*@Column(name = "Manufacturer_NAME")*/
 	private String name;
 	
 	@NotNull
@@ -77,18 +94,14 @@ public class Manufacturer {
 		return location;
 	}
 	
-	public String getPassword() {
-		return password;
-	}
+
 	
 	
 	
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~Setters~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 
 	public void setName(String name) {
 		this.name = name;

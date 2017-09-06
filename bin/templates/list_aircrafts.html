@@ -25,6 +25,13 @@
    		margin-bottom: 10px;
    		
    	}
+   	.buttons{
+   		height: 100%;
+   		width:100%;
+   	}
+   	#headerTable{
+   		width: 100%;
+   	}
    	#headerImg{
    		height: 100px;
    		background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/aircrafts/jet-aircraft-header-3922.jpg"),
@@ -42,29 +49,34 @@
    		box-shadow: 1px 1px 1px;
    		padding: 1%;
    	}
-   	.buttons{
-   		height: 100%;
-   	}
 	#listTable{
-		border: 1px solid #86afba;
+		border: 1px solid #d1993a;
 		margin-left: auto;
 		margin-right: auto;
-		background-color: #86afba;
-		width: 40%;
+		background-color: #d1993a;
+		width: 60%;
 		text-align: center; 
 	}
 	.listHeader{
-		background-color: #86afba;
+		background-color: #d1993a;
 		color: white;
 		font-weight: bold;
 		font-size: 150%;
 	}
 	.listData{
-		border: 1px solid #86afba;
+		border: 1px solid #d1993a;
 		background-color: white;
 		font-size: 125%;
 	}
-	
+	#editButton{
+		align: center;
+		margin-right: 20px;
+		margin-left: 10px;
+	}
+	#removeButton{
+		align: center;
+		margin-right: 10px;
+	}
 	
 </style>
 
@@ -76,7 +88,7 @@
 		 
 		</div>
 		<header id="pageHeader">
-			<table cellspacing="2">
+			<table id="headerTable" cellspacing="2">
 				<th>
 					<form action='/home'>
 	            	
@@ -97,7 +109,7 @@
 				</th>
 				<th>
 					<form th:action="@{/logout}" method="post">
-	            	<input type="submit" value="Sign Out"/>
+	            		<input class="buttons" type="submit" value="Sign Out"/>
 	       	 		</form>
 				</th>
 				<th>
@@ -110,22 +122,35 @@
 		  		<thead>
 		    		<tr>
 		    			<th class="listHeader" width="15%" th:text="Number">id</th>
+		    			<th class="listHeader" th:text = "Model">Model</th>
 		      			<th class="listHeader" th:text="Name">Nome</th>
+		      			<th class="listHeader" th:text="Class">Class</th>
 		      			<th class="listHeader" th:text = "Manufacturer">Manufacturer</th>
-		      			<th class="listHeader" th:text = "Model">Model</th>
-		      			<th sec:authorize="hasRole('MANUFACTURER')" class="listHeader" th:text="Actions">Actions</th>
-		      			<!-- th:if="${#authorization.expression('hasRole('MANUFACTURER')')" -->
+		      			<!-- <th th:if="${#authorization.expression('hasRole('ADMIN')')" class="listHeader" th:text="Actions">Actions</th> -->
+		      			<!-- <th sec:authorize="hasRole('ADMIN')" class="listHeader" th:text="Actions">Actions</th> -->
+		      			
 		      			
 		    		</tr>
 		  		</thead>
 	  			<tbody>
 	    			<tr th:each="crafts: ${aircrafts}">
 				    	<td class="listData" th:text="${crafts.id}"></td>
+				    	<td class="listData" th:text="${crafts.model}"></td>
 				      	<td class="listData" th:text="${crafts.name}"></td>
+				      	<td class="listData" th:text="${crafts.aircraftClass}"></td>
 				      	<td class="listData" th:text="${crafts.manufacturer}"></td>
 				      	<!-- <td th:inline="text">[[${#httpServletRequest.remoteUser}]]</td> -->
-				      	<td class="listData" th:text="${crafts.model}"></td>
 				      	
+				      	<td class="listData" sec:authorize="hasRole('ADMIN')">
+				      		<a href="">
+				      			<img id="editButton" height="25px"
+				      			src="http://freevector.co/wp-content/uploads/2011/12/84380-edit-button.png"/>
+				      		</a>
+				      		<a href="">
+				      			<img id="removeButton" height="25px"
+				      			src="https://cdn4.iconfinder.com/data/icons/proglyphs-editor/512/Wrong_alt-512.png"/>
+				      		</a>
+				      	</td>
 				    </tr>
 	  			</tbody>
 			</table>
