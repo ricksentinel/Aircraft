@@ -4,6 +4,39 @@
         <title>Spring Security Example </title>
     </head>
     <body>
+	    <div id="main">
+		<div id="headerImg">
+			 
+		</div>
+		<header id="pageHeader">
+			<table id="headerTable" cellspacing="2">
+				<th>
+					<form action='/home'>
+	            	
+	            		<input class="buttons" type="submit" value="Home"/>
+	       	 		</form>
+				</th>
+				<th>
+					<form action='/news'>
+	            	
+	            		<input class="buttons" type="submit" value="News"/>
+	       	 		</form>
+				</th>
+				<th>
+					<form action='/aircrafts/projects/new'>
+	            	
+	            		<input class="buttons" type="submit" value="Create Project"/>
+	       	 		</form>
+				</th>
+				<th>
+					<form action='/aircrafts/list/all'>
+	            	
+	            		<input class="buttons" type="submit" value="List of Aircrafts"/>
+	       	 		</form>
+				</th>
+				
+			</table>
+		</header>
          <div th:if="${param.unavailableUsername}">
             Username is unavailable.
         </div>
@@ -17,5 +50,6 @@
             <div><label> Headquarters: <input type="text" name="headquarters"/> </label></div>
             <div><input type="submit" value="Sign Up"/></div>
         </form>
+        </div>
     </body>
 </html>
